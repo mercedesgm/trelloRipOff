@@ -20,3 +20,27 @@
 .App-link {
   color: #09d3ac;
 }
+
+main {
+  display: flex;
+  width: 100vw;
+  height: 70vh;
+  justify-content: space-evenly;
+}
+
+.section {
+  border: 1px red solid;
+  width: 33%;
+}
+
+.taskHolder {
+  display: flex;
+  flex-direction: column;
+  background-color: pink;
+  height: 90%;
+  overflow: scroll;
+}
+
+.task {
+  border: 1px black solid;
+}

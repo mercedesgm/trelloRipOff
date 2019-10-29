@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import RectangleThing from './RectangleThing'
+import {connect} from 'react-redux'
+import AddCard from './AddCard'
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>It's a fucking app</h1>
       </header>
+      <main>
+        <RectangleThing title={'To Do'} tasks={props.toDo} name={'toDo'} prev={''} next={'doing'}/>
+        <RectangleThing title={'Doing'} tasks={props.doing} name={'doing'} prev={'toDo'} next={'done'}/>
+        <RectangleThing title={'Done'} tasks={props.done} name={'done'} prev={'doing'} next={''}/>
+      </main>
+      <AddCard />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  toDo: state.toDo,
+  doing: state.doing,
+  done: state.done
+})
+
+export default connect(mapStateToProps)(App);
